@@ -1,1 +1,0 @@
-pip install --upgrade spark_ai_python
