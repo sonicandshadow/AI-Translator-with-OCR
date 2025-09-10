@@ -1,3 +1,4 @@
+# 对OCR识图得到的文本进行处理，去掉中文和日语中多余的空格避免影响到AI翻译
 import re
 from Utils import openCV_util
 def get_post_line():

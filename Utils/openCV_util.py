@@ -1,6 +1,7 @@
 import math
 import tesserocr
 from PIL import Image
+# OCR 当前版本未对图像进行处理，接下来学习cv2对图像进行处理防止背景对识图的干扰
 import cv2
 # img = cv2.imread('../image.png')
 # img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)

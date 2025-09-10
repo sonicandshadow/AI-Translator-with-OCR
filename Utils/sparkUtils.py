@@ -1,3 +1,4 @@
+# 调用AI并输出
 import _thread as thread
 import base64
 import datetime
@@ -101,10 +102,12 @@ def gen_params(appid, domain, query):
 
 
 def on_error(ws, error):
+    # 错误信息
     print("## error:", error)
 
 
 def on_close(ws,arg=None,args=None):
+    # 关闭对话时的提示
     print("### closed ###")
 
 
@@ -128,6 +131,12 @@ def on_message(ws, message):
         status = choices["status"]
         content = choices["text"][0]["content"]
         print(content, end='')
+        f = open("result.txt", "a", encoding='utf-8')
+        f.write(content)
+        f.close()
         if status == 2:
             # print("\n####关闭会话######")
+            f = open("result.txt", "a", encoding='utf-8')
+            f.write("\n")
+            f.close()
             ws.close()
