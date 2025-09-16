@@ -14,7 +14,7 @@ from wsgiref.handlers import format_date_time
 
 import websocket
 
-
+display_text = ""
 class Ws_Param(object):
     def __init__(self, appid, api_key, api_secret, gpt_url):
         self.appid = appid
@@ -131,12 +131,15 @@ def on_message(ws, message):
         status = choices["status"]
         content = choices["text"][0]["content"]
         print(content, end='')
-        f = open("result.txt", "a", encoding='utf-8')
+        f = open("result.json", "a", encoding='utf-8')
+        f.write(content)
+        f.close()
+        f = open("temp.txt", "a", encoding='utf-8')
         f.write(content)
         f.close()
         if status == 2:
             # print("\n####关闭会话######")
-            f = open("result.txt", "a", encoding='utf-8')
-            f.write("\n")
+            f = open("result.json", "a", encoding='utf-8')
+            f.write("\"" + "," + "\n")
             f.close()
             ws.close()
