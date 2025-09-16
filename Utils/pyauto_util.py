@@ -51,6 +51,18 @@ def get_screen_zone():
     # screenshot.save("image.png")
 
 
+def get_show_zone():
+    root = tk.Tk()
+    root.overrideredirect(True)
+    root.attributes('-alpha', 0.25)
+    TRANSCOLOUR = 'gray'
+    root.configure(background='gray')
+    selector = SelectArea(root)
+    root.mainloop()
+    root.destroy()
+    return selector.selected_area
+
+
 def get_screenshot(selected_zone):
     screenshot = ImageGrab.grab(selected_zone)
     screenshot.save("image.png")
